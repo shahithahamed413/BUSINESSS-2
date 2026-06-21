@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Membership Plans | PowerFit Gym</title>
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#111;
+    color:white;
+}
+
+nav{
+    background:black;
+    padding:20px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+nav h2{
+    color:gold;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+}
+
+.hero{
+    text-align:center;
+    padding:60px 20px;
+}
+
+.hero h1{
+    color:gold;
+    margin-bottom:10px;
+}
+
+.plans-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+    padding:40px;
+}
+
+.plan-card{
+    background:#222;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    transition:0.3s;
+}
+
+.plan-card:hover{
+    transform:translateY(-5px);
+}
+
+.plan-card h2{
+    color:gold;
+    margin-bottom:15px;
+}
+
+.price{
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+.plan-card ul{
+    list-style:none;
+    margin-bottom:20px;
+}
+
+.plan-card li{
+    padding:8px 0;
+}
+
+.btn{
+    display:inline-block;
+    background:gold;
+    color:black;
+    text-decoration:none;
+    padding:10px 20px;
+    border-radius:5px;
+    font-weight:bold;
+}
+
+footer{
+    background:black;
+    text-align:center;
+    padding:20px;
+    margin-top:30px;
+}
+</style>
+
+</head>
+<body>
+
+<nav>
+    <h2>POWERFIT GYM</h2>
+
+    <div>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="plans.html">Plans</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>Membership Plans</h1>
+    <p>Choose the perfect fitness plan for your goals.</p>
+</section>
+
+<section class="plans-container">
+
+    <!-- Starter Plan -->
+    <div class="plan-card">
+        <h2>Starter Plan</h2>
+
+        <div class="price">
+            ₹999 / Month
+        </div>
+
+        <ul>
+            <li>Gym Access</li>
+            <li>Workout Plan</li>
+            <li>Trainer Guidance</li>
+            <li>Fitness Assessment</li>
+        </ul>
+
+        <a href="plans/newplanner.html" class="btn">Join Now</a>
+    </div>
+
+    <!-- Weight Loss Plan -->
+    <div class="plan-card">
+        <h2>Weight Loss Plan</h2>
+
+        <div class="price">
+            ₹2499 / 3 Months
+        </div>
+
+        <ul>
+            <li>Cardio Training</li>
+            <li>Fat Loss Program</li>
+            <li>Diet Guidance</li>
+            <li>Progress Tracking</li>
+        </ul>
+
+        <a href="plans/weightloss.html" class="btn">Join Now</a>
+    </div>
+
+    <!-- Muscle Gain Plan -->
+    <div class="plan-card">
+        <h2>Muscle Gain Plan</h2>
+
+        <div class="price">
+            ₹2999 / 3 Months
+        </div>
+
+        <ul>
+            <li>Strength Training</li>
+            <li>Weightlifting Program</li>
+            <li>Nutrition Guidance</li>
+            <li>Monthly Progress Review</li>
+        </ul>
+
+        <a href="plans/muscleg.html" class="btn">
+            View Details
+        </a>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 PowerFit Gym. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
+
