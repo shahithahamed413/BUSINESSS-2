@@ -34,12 +34,16 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20'
-      - name: Install dependencies
+      - name: Install backend dependencies
         working-directory: ./backend
         run: npm install
       - name: Run tests
         working-directory: ./backend
         run: npm test
+      - name: Frontend build
+        working-directory: ./frontend
+        run: npm install && npm run build
+
  # sonarqube-analysis:
   #  runs-on: ubuntu-latest
    # needs: build-and-scan
@@ -59,13 +63,22 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Run Trivy scanner without cache
+      - name: Run Trivy scanner backend
         uses: aquasecurity/trivy-action@v0.36.0
         continue-on-error: true
         with:
            scan-type: 'fs'
            scan-ref: '.'
            severity: 'CRITICAL,HIGH'
+           working-dir: './backend'
+      - name: Run Trivy scanner frontend
+        uses: aquasecurity/trivy-action@v0.36.0
+        continue-on-error: true
+        with:
+           scan-type: 'fs'
+           scan-ref: '.'
+           severity: 'CRITICAL,HIGH'
+           working-dir: './frontend'
 
 
            
@@ -82,20 +95,31 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: build docker image
-        run: docker build -t  shahith/powerfit-gym:latest .
-      - name: scan docker image
+      - name: build docker backend image
+        run: docker build -t  shahith/powerfit-gym:latest-backend ./backend
+      - name: build docker frontend image
+        run: docker build -t  shahith/powerfit-gym-frontend:latest-frontend ./frontend
+      - name: scan docker backendimage
         uses: aquasecurity/trivy-action@v0.36.0
         with:
           scan-type: 'image'
-          scan-ref: 'shahith/powerfit-gym:latest' 
+          scan-ref: 'shahith/powerfit-gym:latest-backend' 
           format: 'table'
           exit-code: '1'
           severity: 'CRITICAL'
-      - name: Push to Docker Hub
-        run: docker push shahith/powerfit-gym:latest
-
-
+      - name: Push backend image to Docker Hub
+        run: docker push shahith/powerfit-gym:latest-backend
+      - name: scan docker frontend image
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: 'image'
+          scan-ref: 'shahith/powerfit-gym-frontend:latest-frontend'
+          format: 'table'
+          exit-code: '1'
+          severity: 'CRITICAL'
+      - name: Push frontend image to Docker Hub
+        run: docker push shahith/powerfit-gym-frontend:latest-frontend
+ 
 
 
   deploy-to-eks:
