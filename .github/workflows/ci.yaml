@@ -35,8 +35,10 @@ jobs:
         with:
           node-version: '20'
       - name: Install dependencies
+        working-directory: ./backend
         run: npm install
       - name: Run tests
+        working-directory: ./backend
         run: npm test
  # sonarqube-analysis:
   #  runs-on: ubuntu-latest
