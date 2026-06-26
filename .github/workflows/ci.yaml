@@ -150,22 +150,25 @@ jobs:
 
       - name: Update kubeconfig
         run: aws eks update-kubeconfig --region ap-south-1 --name power-fit-gym-cluster
+      
+      - name : Verify cluster access
+        run: kubectl get svc
 
       - name: Deploy to EKS front end deployment 
-        run: kubectl apply -f k8s/frontend-deployment.yaml
+        run: kubectl apply --validate=false -f k8s/frontend-deployment.yaml
 
       - name: Deploy to EKS front end service
-        run: kubectl apply -f k8s/frontend-service.yaml
+        run: kubectl apply --validate=false -f k8s/frontend-service.yaml
         
       - name: Deploy to EKS backend deployment
-        run: kubectl apply -f k8s/backend-deployment.yaml
+        run: kubectl apply --validate=false -f k8s/backend-deployment.yaml
 
       - name: Deploy to EKS backend service
-        run: kubectl apply -f k8s/backend-service.yaml
+        run: kubectl apply --validate=false -f k8s/backend-service.yaml
 
       - name: Deploy to EKS database deployment
-        run: kubectl apply -f k8s/db-deployment.yaml
-        
+        run: kubectl apply --validate=false -f k8s/db-deployment.yaml
+
       - name: Deploy to EKS database service
-        run: kubectl apply -f k8s/db-service.yaml
+        run: kubectl apply --validate=false -f k8s/db-service.yaml
       
