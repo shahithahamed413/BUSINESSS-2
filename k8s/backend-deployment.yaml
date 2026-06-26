@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: shahith/powerfit-gym:latest
+          image: shahith/powerfit-gym:latest-backend
           ports:
             - containerPort: 3000
           env:

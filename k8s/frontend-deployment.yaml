@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: shahith/powerfit-gym:latest
+          image: shahith/powerfit-gym:latest-frontend
           ports:
             - containerPort: 80
           resources:
