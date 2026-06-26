@@ -1,0 +1,20 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Frontend application for business website",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server .",
+    "dev": "http-server . -c-1",
+    "build": "echo 'Build step for frontend'"
+  },
+  "keywords": ["web", "frontend"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "prettier": "^3.0.0",
+    "eslint": "^8.0.0"
+  },
+  "dependencies": {}
+}
